@@ -1,0 +1,24 @@
+<%- include('partials/header.ejs') %>
+
+<nav>
+    <img src="###" alt="Logo">
+    <div class="entry-field">
+        <form action="/submit" method="post">
+            <h2>Post:</h2>
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title">
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author">
+            <label for="content">Content:</label>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</nav>
+<main>
+    <% if (locals.post) {%>
+        <h1>DATA PRESENT</h1>
+    <% } %>
+</main>
+
+<%- include('partials/footer.ejs') %>
