@@ -6,18 +6,26 @@
         <form action="/submit" method="post">
             <h2>Post:</h2>
             <label for="title">Title:</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" required>
             <label for="author">Author:</label>
-            <input type="text" name="author" id="author">
+            <input type="text" name="author" id="author" required>
             <label for="content">Content:</label>
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea name="content" id="content" cols="30" rows="10" required></textarea>
             <input type="submit" value="Submit">
         </form>
     </div>
 </nav>
 <main>
-    <% if (locals.post) {%>
-        <h1>DATA PRESENT</h1>
+    <% if (locals.content) {%>
+        <h1>DATA PRESENT:</h1>
+        <h2>TITLE:</h2>
+        <%= locals.title %>
+        <h2>AUTHOR:</h2>
+        <%= locals.author %>
+        <h2>POST:</h2>
+        <%= locals.content %>
+    <% } else {%>
+        <h1>POST WILL APPEAR HERE</h1>
     <% } %>
 </main>
 

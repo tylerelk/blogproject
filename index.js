@@ -4,6 +4,8 @@ import bodyParser from "body-parser";
 const app = express();
 const port = 3000;
 
+const allPosts = [];
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -13,8 +15,9 @@ app.get("/", (req, res) => {
 
 app.post('/submit', (req, res) => {
     let post = new BlogPost(req.body.title, req.body.author, req.body.content);
-    console.log(post);
-    res.render('index.ejs', post);
+    allPosts.push(post.postID);
+    console.log(allPosts);
+    res.render('index.ejs', {title: post.title, author: post.author, content: post.content});
 })
 
 app.listen(port, () => {
@@ -30,6 +33,6 @@ class BlogPost {
     };
 
     generateID(title) {
-     return `posttitle-${title}`;
+     return `post-${title}`;
     }
 }
