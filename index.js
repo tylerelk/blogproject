@@ -13,7 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { data: data, message: 'Welcome. Select or create a post' });
+  res.render("index.ejs", {
+    data: data,
+    message: "Welcome. Select or create a post",
+  });
 });
 
 app.post("/submit", (req, res) => {
@@ -23,16 +26,37 @@ app.post("/submit", (req, res) => {
 });
 
 app.post("/select", (req, res) => {
-  res.render("index.ejs", { data: data, postID: Number(req.body.postSelection) });
+  res.render("index.ejs", {
+    data: data,
+    postID: Number(req.body.postSelection),
+  });
+});
+
+app.post("/editRequest", (req, res) => {
+  res.render("index.ejs", {
+    data: data,
+    message: `Editing Post: ${allPosts[req.body.postid].title}`,
+    postID: req.body.postid,
+    edit: true,
+  });
 });
 
 app.post('/edit', (req, res) => {
-    
-});
+  allPosts[req.body.postid].title = req.body.title;
+  allPosts[req.body.postid].author = req.body.author;
+  allPosts[req.body.postid].content = req.body.content;
+  res.render('index.ejs', {
+    data: data,
+    message: 'Post Edited'
+  })
+})
 
-app.post('/delete', (req, res) => {
-    delete allPosts[req.body.postid];
-    res.render('index.ejs', {data: data, postID: null, message: 'Post Deleted'})
+app.post("/delete", (req, res) => {
+  delete allPosts[req.body.postid];
+  res.render("index.ejs", {
+    data: data,
+    message: "Post Deleted",
+  });
 });
 
 app.listen(port, () => {

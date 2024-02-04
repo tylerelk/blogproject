@@ -23,7 +23,7 @@
         <%= locals.data.posts[locals.postID].author %>
         <h2>POST:</h2>
         <%= locals.data.posts[locals.postID].content %>
-        <form action="/edit" method="post">
+        <form action="/editRequest" method="post">
             <input type="hidden" name="postid" value="<%= locals.postID %>">
             <button type="submit">Edit</button>
         </form>
@@ -33,6 +33,20 @@
         </form>
     <% } else {%>
         <h1><%= locals.message %></h1>
+    <% } %>
+    <% if (locals.edit) {%>
+        <h1>EDIT:</h1>
+        <form action="/edit" method="post">
+            <h2>Post:</h2>
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="<%= locals.data.posts[locals.postID].title %>" required>
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author" value="<%= locals.data.posts[locals.postID].author %>" required>
+            <label for="content">Content:</label>
+            <textarea name="content" id="content" cols="30" rows="10" required><%= locals.data.posts[locals.postID].content %></textarea>
+            <input type="hidden" name="postid" value="<%= locals.postID %>">
+            <input type="submit" value="Edit">
+        </form>
     <% } %>
 </main>
 
