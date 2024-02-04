@@ -3,14 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Personal Blog</title>
     <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Sono:wght@200..800&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
-      <h1>HEADER</h1>
+      <div class="logo-container">
+        <a href="/"><img src="/images/book-icon.svg" alt="Logo" class="logo-icon"></a>
+        <h1>Blog</h1>
+      </div>
       <% if (locals.data.posts.length > 0 && !locals.data.posts.every(post => {post == undefined})) {%>
-      <form action="/select" method="post">
+      <form action="/select" method="post" class="post-selection">
         <select name="postSelection" id="post-selection">
           <% for (let i = 0; i < locals.data.posts.length; i++) {%>
           <% if (!locals.data.posts[i]) {%>
@@ -22,7 +29,7 @@
         <input type="submit" value="Go" />
       </form>
       <% } else { %>
-      <h2>No Posts</h2>
+      <h2 class="no-posts">No Posts</h2>
       <% } %>
     </header>
   </body>

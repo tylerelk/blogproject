@@ -1,0 +1,182 @@
+:root {
+  /* Colors */
+  --dark: #222831;
+  --light: #dddddd;
+  --highlight: #f05454;
+  --accent: #30475e;
+}
+
+/* Settings for entire document */
+
+html {
+  overflow-x: hidden;
+  background-color: #222831;
+  background: radial-gradient(
+      circle,
+      transparent 20%,
+      #222831 20%,
+      #222831 80%,
+      transparent 80%,
+      transparent
+    ),
+    radial-gradient(
+        circle,
+        transparent 20%,
+        #222831 20%,
+        #222831 80%,
+        transparent 80%,
+        transparent
+      )
+      80px 80px,
+    linear-gradient(#30475e 6.4px, transparent 6.4px) 0 -3.2px,
+    linear-gradient(90deg, #30475e 6.4px, #222831 6.4px) -3.2px 0;
+  background-size: 160px 160px, 160px 160px, 80px 80px, 80px 80px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light)
+}
+
+body {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  color: var(--light);
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1,
+h2 {
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+}
+
+h3,
+h4,
+h5,
+p,
+label,
+input,
+button {
+  font-family: "Sono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "MONO" 1;
+}
+
+button,
+input[type="submit"] {
+  border: none;
+  outline: none;
+  background-color: var(--highlight);
+  color: var(--light);
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+  box-shadow: 2px 2px 3px 2px var(--dark);
+  font-size: 16px;
+}
+
+/* Header settings */
+
+header {
+  width: 100%;
+  margin: 0;
+  background-color: var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.logo-icon {
+    width: 3rem;
+    filter: invert();
+    margin: 0;
+}
+
+.no-posts {
+  margin: 0 1rem;
+}
+
+.post-selection {
+  margin: 0 1rem;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#post-selection {
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px 2px var(--dark);
+  width: 6rem;
+}
+
+#post-selection > option {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Main section settings */
+
+nav {
+  height: min-content;
+  padding: 1rem;
+  border: 2px solid var(--light);
+  border-radius: 10px;
+  background-color: #30475e55;
+}
+
+.entry-field {
+  width: 100%;
+  transform: scaleY(0);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.entry-field > form  {
+  width: 90%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.expand-icon {
+  transition: 300ms;
+}
+
+nav label {
+  display: block;
+  margin: 10px 0;
+}
+
+main {
+  padding: 1rem;
+  transition: 300ms;
+  margin-bottom: 5rem;
+}
+
+/* Footer Settings */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 1rem;
+}

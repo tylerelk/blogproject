@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.render("index.ejs", {
     data: data,
-    message: "Welcome. Select or create a post",
+    message: "Select or create a post",
   });
 });
 
