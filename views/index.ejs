@@ -23,8 +23,16 @@
         <%= locals.data.posts[locals.postID].author %>
         <h2>POST:</h2>
         <%= locals.data.posts[locals.postID].content %>
+        <form action="/edit" method="post">
+            <input type="hidden" name="postid" value="<%= locals.postID %>">
+            <button type="submit">Edit</button>
+        </form>
+        <form action="/delete" method="post">
+            <input type="hidden" name="postid" value="<%= locals.postID %>">
+            <button type="submit">Delete</button>
+        </form>
     <% } else {%>
-        <h1>NO POSTS or SELECT POST</h1>
+        <h1><%= locals.message %></h1>
     <% } %>
 </main>
 

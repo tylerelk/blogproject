@@ -5,20 +5,15 @@ const app = express();
 const port = 3000;
 
 const allPosts = [];
-const referencePost = (post, arr) => {
-  let thisPost = arr[post.postID];
-  return thisPost.title;
-};
 const data = {
   posts: allPosts,
-  reference: referencePost,
 };
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { data: data });
+  res.render("index.ejs", { data: data, message: 'Welcome. Select or create a post' });
 });
 
 app.post("/submit", (req, res) => {
@@ -29,6 +24,15 @@ app.post("/submit", (req, res) => {
 
 app.post("/select", (req, res) => {
   res.render("index.ejs", { data: data, postID: Number(req.body.postSelection) });
+});
+
+app.post('/edit', (req, res) => {
+    
+});
+
+app.post('/delete', (req, res) => {
+    delete allPosts[req.body.postid];
+    res.render('index.ejs', {data: data, postID: null, message: 'Post Deleted'})
 });
 
 app.listen(port, () => {

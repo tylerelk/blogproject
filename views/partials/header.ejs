@@ -9,15 +9,21 @@
   <body>
     <header>
       <h1>HEADER</h1>
-      <% if (locals.data.posts.length > 0) {%>
+      <% if (locals.data.posts.length > 0 && locals.postID != null) {%>
       <form action="/select" method="post">
-      <select name="postSelection" id="post-selection">
-        <% for (let i = 0; i < locals.data.posts.length; i++) {%>
-        <option value="<%= locals.data.posts[i].postID %>"><%= locals.data.posts[i].title %> by <%= locals.data.posts[i].author %></option>
-        <% } %>
-      </select>
-      <input type="submit" value="Go">
+        <select name="postSelection" id="post-selection">
+          <% for (let i = 0; i < locals.data.posts.length; i++) {%> <% if
+          (!locals.data.posts[i]) {%> <% continue; %> <% } else { %>
+          <option value="<%= locals.data.posts[i].postID %>">
+            <%= locals.data.posts[i].title %> by <%= locals.data.posts[i].author
+            %>
+          </option>
+          <% }} %>
+        </select>
+        <input type="submit" value="Go" />
       </form>
+      <% } else { %>
+      <h2>No Posts</h2>
       <% } %>
     </header>
   </body>
