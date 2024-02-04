@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Blog</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>HEADER</h1>
+      <h1>HEADER</h1>
+      <% if (locals.data.posts.length > 0) {%>
+      <form action="/select" method="post">
+      <select name="postSelection" id="post-selection">
+        <% for (let i = 0; i < locals.data.posts.length; i++) {%>
+        <option value="<%= locals.data.posts[i].postID %>"><%= locals.data.posts[i].title %> by <%= locals.data.posts[i].author %></option>
+        <% } %>
+      </select>
+      <input type="submit" value="Go">
+      </form>
+      <% } %>
     </header>
+  </body>
+</html>

@@ -16,16 +16,15 @@
     </div>
 </nav>
 <main>
-    <% if (locals.content) {%>
-        <h1>DATA PRESENT:</h1>
+    <% if (locals.postID != null) {%>
         <h2>TITLE:</h2>
-        <%= locals.title %>
+        <%= locals.data.posts[locals.postID].title %>
         <h2>AUTHOR:</h2>
-        <%= locals.author %>
+        <%= locals.data.posts[locals.postID].author %>
         <h2>POST:</h2>
-        <%= locals.content %>
+        <%= locals.data.posts[locals.postID].content %>
     <% } else {%>
-        <h1>POST WILL APPEAR HERE</h1>
+        <h1>NO POSTS or SELECT POST</h1>
     <% } %>
 </main>
 
