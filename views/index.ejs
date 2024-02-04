@@ -1,58 +1,59 @@
 <%- include('partials/header.ejs') %>
 
     <% if (locals.edit) {%>
-    <nav>
         <div class="logo-container">
             <h2>Edit</h2>
             <img src="/images/down.svg" alt="expand" class="logo-icon expand-icon" style="transform: rotate(180deg)">
         </div>
-        <div class="entry-field" style="transform: scaleY(1);">
+    <nav style="transform: scaleY(1);">
+        <div class="entry-field">
+            <form action="/edit" method="post">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" value="<%= locals.data.posts[locals.postID].title %>" required>
+                <label for="author">Author:</label>
+                <input type="text" name="author" id="author" value="<%= locals.data.posts[locals.postID].author %>" required>
+                <label for="content">Content:</label>
+                <textarea name="content" id="content" required><%= locals.data.posts[locals.postID].content %></textarea>
+                <input type="hidden" name="postid" value="<%= locals.postID %>">
+                <input type="submit" value="Edit">
+            </form>
+        </div>
+    </nav>
     <% } else { %>
-    <nav>
         <div class="logo-container">
             <h2>Post</h2>
             <img src="/images/down.svg" alt="expand" class="logo-icon expand-icon" style="transform: rotate(0deg)">
         </div>
-        <div class="entry-field" style="transform: scaleY(0); position: absolute;">
+    <nav style="transform: scaleY(0); position: absolute;">
+        <div class="entry-field">
+            <form action="/submit" method="post">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" required>
+                <label for="author">Author:</label>
+                <input type="text" name="author" id="author" required>
+                <label for="content">Content:</label>
+                <textarea name="content" id="content" required></textarea>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </nav>
     <% } %>
-    <% if (locals.edit) {%>
-        <form action="/edit" method="post">
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title" value="<%= locals.data.posts[locals.postID].title %>" required>
-            <label for="author">Author:</label>
-            <input type="text" name="author" id="author" value="<%= locals.data.posts[locals.postID].author %>" required>
-            <label for="content">Content:</label>
-            <textarea name="content" id="content" required><%= locals.data.posts[locals.postID].content %></textarea>
-            <input type="hidden" name="postid" value="<%= locals.postID %>">
-            <input type="submit" value="Edit">
-        </form>
-    <% } else {%>
-        <form action="/submit" method="post">
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title" required>
-            <label for="author">Author:</label>
-            <input type="text" name="author" id="author" required>
-            <label for="content">Content:</label>
-            <textarea name="content" id="content" required></textarea>
-            <input type="submit" value="Submit">
-        </form>
-    <% } %>
-    </div>
-</nav>
 <main>
     <% if (locals.postID != null) {%>
         <h1><%= locals.data.posts[locals.postID].title %></h1>
         <h3>by</h3>
         <h2><%= locals.data.posts[locals.postID].author %></h2>
         <p><%= locals.data.posts[locals.postID].content %></p>
-        <form action="/editRequest" method="post">
-            <input type="hidden" name="postid" value="<%= locals.postID %>">
-            <button type="submit">Edit</button>
-        </form>
-        <form action="/delete" method="post">
-            <input type="hidden" name="postid" value="<%= locals.postID %>">
-            <button type="submit">Delete</button>
-        </form>
+        <div class="edit-delete-container">
+            <form action="/editRequest" method="post">
+                <input type="hidden" name="postid" value="<%= locals.postID %>">
+                <button type="submit">Edit</button>
+            </form>
+            <form action="/delete" method="post">
+                <input type="hidden" name="postid" value="<%= locals.postID %>">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
     <% } else {%>
         <h1><%= locals.message %></h1>
     <% } %>
