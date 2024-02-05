@@ -1,7 +1,7 @@
 <%- include('partials/header.ejs') %>
-
+<div class="master-div">
     <% if (locals.edit) {%>
-        <div class="logo-container">
+        <div class="logo-container entry-container">
             <h2>Edit</h2>
             <img src="/images/down.svg" alt="expand" class="logo-icon expand-icon" style="transform: rotate(180deg)">
         </div>
@@ -20,7 +20,7 @@
         </div>
     </nav>
     <% } else { %>
-        <div class="logo-container">
+        <div class="logo-container entry-container">
             <h2>Post</h2>
             <img src="/images/down.svg" alt="expand" class="logo-icon expand-icon" style="transform: rotate(0deg)">
         </div>
@@ -58,5 +58,6 @@
         <h1><%= locals.message %></h1>
     <% } %>
 </main>
+</div>
 
 <%- include('partials/footer.ejs') %>

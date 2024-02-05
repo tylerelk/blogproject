@@ -33,6 +33,10 @@ html {
   background-size: 160px 160px, 160px 160px, 80px 80px, 80px 80px;
 }
 
+textarea {
+  resize: none;
+}
+
 a {
   text-decoration: none;
   color: var(--light)
@@ -140,8 +144,8 @@ header {
 
 nav {
   height: min-content;
+  margin: 1rem 0;
   padding: 1rem;
-  border: 2px solid var(--light);
   border-radius: 10px;
   background-color: #30475e55;
 }
@@ -177,6 +181,16 @@ main {
   margin-bottom: 5rem;
 }
 
+nav, main, .entry-container {
+  background-color: #dddddd25;
+  border-radius: 20px;
+}
+
+.entry-container {
+  padding: 0 1rem;
+  margin: 1rem 0;
+}
+
 .edit-delete-container {
   width: 60%;
   margin: 1rem auto;
@@ -198,5 +212,26 @@ footer {
 /* Desktop settings */
 
 @media (min-width: 500px) {
-  
+  .master-div {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .logo-container {
+    max-width: 10%;
+  }
+
+  .edit-delete-container {
+    width: 20%;
+    margin: 0;
+  }
+
+  .post-selection {
+    width: 15%;
+    margin: 0;
+  }
+
+  #post-selection {
+    width: 50%;
+  }
 }
